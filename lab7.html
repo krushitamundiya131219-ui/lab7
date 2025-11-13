@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard with Accordion</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #faf6f1;
+    }
+    h2 {
+      color: #6b4f4f;
+      font-weight: bold;
+    }
+    .accordion-button {
+      background-color: #e8bfa6; 
+      color: #4a3c3c;
+      font-weight: 500;
+    }
+    .accordion-button.collapsed {
+      background-color: #deb8a7;
+      color: #4a3c3c;
+    }
+    .accordion-body {
+      background: #4f9469;
+    }
+    .flip-card {
+      background: transparent;
+      perspective: 1000px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: .5rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 1rem;
+    }
+    .flip-card-front {
+      background: #fff5ef; 
+      color: #4a3c3c;
+    }
+    .flip-card-back {
+      background: #e9cfc5; /* nude beige */
+      color: #2d2323;
+      transform: rotateY(180deg);
+    }
+
+    /* Alerts pastel */
+    .alert-success { background: #d8f3dc; color: #1b4332; }
+    .alert-warning { background: #fff3cd; color: #856404; }
+    .alert-danger { background: #f8d7da; color: #842029; }
+    .alert-info { background: #cff4fc; color: #055160; }
+
+    table thead {
+      background-color: #f8d7c4;
+      color: #4a3c3c;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container py-4">
+  <h2 class="mb-4 text-center">Dashboard with Accordion</h2>
+
+  <div class="accordion" id="dashboardAccordion">
+    
+    <!-- Accordion 1: Table -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          User Data Table
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#dashboardAccordion">
+        <div class="accordion-body">
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Amit</td><td>amit@example.com</td><td>Active</td><td>Admin</td></tr>
+              <tr><td>2</td><td>Sara</td><td>sara@example.com</td><td>Inactive</td><td>User</td></tr>
+              <tr><td>3</td><td>John</td><td>john@example.com</td><td>Active</td><td>Manager</td></tr>
+              <tr><td>4</td><td>Priya</td><td>priya@example.com</td><td>Active</td><td>HR</td></tr>
+              <tr><td>5</td><td>David</td><td>david@example.com</td><td>Inactive</td><td>Support</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Accordion 2: Form -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Registration Form
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#dashboardAccordion">
+        <div class="accordion-body">
+          <form>
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-control" placeholder="Enter your name">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" placeholder="Enter your email">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="password" class="form-control" placeholder="Enter password">
+            </div>
+            <button type="submit" class="btn btn-dark">Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Accordion 3: Cards -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Information Cards
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#dashboardAccordion">
+        <div class="accordion-body">
+          <div class="row g-3">
+       
+            <div class="col-md-4 col-lg-3">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <h5>Sales</h5>
+                    <p>₹50,000 this month</p>
+                  </div>
+                  <div class="flip-card-back">
+                    <h5>Details</h5>
+                    <p>Compared to last month: +10%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <h5>Users</h5>
+                    <p>1,250 active users</p>
+                  </div>
+                  <div class="flip-card-back">
+                    <h5>Details</h5>
+                    <p>New users this week: 120</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <h5>Tasks</h5>
+                    <p>15 pending tasks</p>
+                  </div>
+                  <div class="flip-card-back">
+                    <h5>Details</h5>
+                    <p>5 due today, 10 due this week</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <h5>Revenue</h5>
+                    <p>₹2,40,000 this quarter</p>
+                  </div>
+                  <div class="flip-card-back">
+                    <h5>Details</h5>
+                    <p>Target achievement: 80%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <h5>Projects</h5>
+                    <p>7 ongoing projects</p>
+                  </div>
+                  <div class="flip-card-back">
+                    <h5>Details</h5>
+                    <p>3 near completion, 4 in progress</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Notifications
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#dashboardAccordion">
+        <div class="accordion-body">
+          <div class="alert alert-success"> Task completed successfully!</div>
+          <div class="alert alert-warning"> Low storage space remaining.</div>
+          <div class="alert alert-danger"> Error processing payment.</div>
+          <div class="alert alert-info">ℹ New update available.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
